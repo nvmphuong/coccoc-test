@@ -17,6 +17,7 @@ docker exec nhp_api php artisan migrate
 
 - Open frontend by your docker ip
 - Api hosted at port 8888
+- Open link /admin (or click on menu) to submit playlist, song link 
 
 ### Run test
 ```
