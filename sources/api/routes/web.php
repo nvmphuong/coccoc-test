@@ -16,6 +16,6 @@ $router->group(['prefix' => 'api', 'middleware' => 'cors'], function () use ($ro
     $router->post('crawl', 'CrawlController@postCrawl');
     $router->get('playlist', 'PlaylistController@index');
     $router->get('playlist/{id}', 'PlaylistController@show');
-    $router->get('media', 'MediaController@index');
+    $router->get('medias', 'MediaController@index');
     $router->get('download/{id}', 'MediaController@download');
 });

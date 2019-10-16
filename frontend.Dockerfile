@@ -5,8 +5,9 @@ WORKDIR /var/www/frontend
 
 
 # install and cache app dependencies
-
-RUN npm install @vue/cli -g
+COPY sources/frontend/package.json /var/www/frontend/package.json
+RUN npm install
+RUN npm install @vue/cli@3.7.0 -g
 
 
 

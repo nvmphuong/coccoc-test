@@ -6,14 +6,21 @@ use App\Crawlers\MediaCrawler;
 use App\Http\Responses\ApiResponse;
 use App\Media;
 use App\Playlist;
+use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
     use ApiResponse;
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = Media::orderByDesc('id')->paginate(20);
+        $query=Media::orderByDesc('id');
+        if($search = $request->get('search')){
+            $query->where('name','like' ,'%'.$search.'%')->orWhereHas('artists' ,function ($query) use ($search){
+               $query->where('name','like' ,'%'.$search.'%');
+            });
+        }
+        $data = $query->paginate(20);
         return $this->response($data);
     }
 

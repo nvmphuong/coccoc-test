@@ -10,6 +10,7 @@ Vue.use(Router);
 const Home = () => import('@/pages/home')
 const Admin = () => import('@/pages/admin')
 const Playlist = () => import('@/pages/playlist')
+const Medias = () => import('@/pages/medias')
 
 const router = new Router({
     mode: 'history',
@@ -17,6 +18,7 @@ const router = new Router({
         // dynamic segments start with a colon
         {path: '/', name: 'home', component: Home}
         ,{path: '/admin', name: 'admin', component: Admin}
+        ,{path: '/medias', name: 'medias', component: Medias}
         ,{path: '/playlist/:id', name: 'playlist', component: Playlist , props: true},
     ],
 });

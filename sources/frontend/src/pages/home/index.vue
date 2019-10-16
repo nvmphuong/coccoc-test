@@ -23,22 +23,7 @@
         <div v-else>
             No playlist found.
         </div>
-        <div v-if="allMedia.length">
 
-            <!-- Page Heading -->
-            <h2 class="my-4">All Media
-            </h2>
-
-            <div class="row">
-                <ul id="medias-list">
-                    <li v-for="media in allMedia">
-                        <MediaItem :value="media"/>
-
-                    </li>
-                </ul>
-
-            </div>
-        </div>
         <!-- /.row -->
 
     </section>
@@ -67,15 +52,10 @@
 
                     this.allPlaylist = rs.data
                 })
-            }, loadMedias(page = 1){
-                this.$api.get('media?page=' + page).then(rs => {
-                    this.allMedia = rs.data
-                })
             }
         },
         mounted(){
             this.loadPlaylist()
-            this.loadMedias()
         }
     }
 </script>

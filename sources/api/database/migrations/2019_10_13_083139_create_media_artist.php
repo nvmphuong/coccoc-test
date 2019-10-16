@@ -13,10 +13,14 @@ class CreateMediaArtist extends Migration
      */
     public function up()
     {
-        Schema::create('media_artist', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('media_id');
-            $table->bigInteger('artist_id');
+        Schema::table('medias', function (Blueprint $table) {
+            $table->index('name');
+        });
+        Schema::table('playlists', function (Blueprint $table) {
+            $table->index('name');
+        });
+        Schema::table('artists', function (Blueprint $table) {
+            $table->index('name');
         });
     }
 
@@ -27,6 +31,14 @@ class CreateMediaArtist extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media_artist');
+        Schema::table('medias', function (Blueprint $table) {
+            $table->dropIndex('name');
+        });
+        Schema::table('playlists', function (Blueprint $table) {
+            $table->dropIndex('name');
+        });
+        Schema::table('artists', function (Blueprint $table) {
+            $table->dropIndex('name');
+        });
     }
 }
