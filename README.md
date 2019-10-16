@@ -13,12 +13,10 @@ docker-compose up -d
 docker exec  nhp_api composer install
 docker exec  nhp_api php artisan migrate
 
-#install dependencies for frontend
-docker exec  nhp_frontend npm install
 ```
 
-Wait few minutes and open frontend by your docker ip
-Open backend by your docker ip with port 8888
+- Wait few minutes and open frontend by your docker ip
+- Api hosted at port 8888
 
 ### Run test
 ```
