@@ -1,0 +1,76 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+      build:
+        context: .
+        dockerfile: api.Dockerfile
+      image: ${APP_NAME}
+      container_name: ${APP_NAME}_api
+      restart: unless-stopped
+      tty: true
+      env_file:
+          - .env
+      working_dir: /var/www/api
+      volumes:
+        - ./sources/api:/var/www/api
+        - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      networks:
+        - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: ${APP_NAME}_db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      - "MYSQL_DATABASE=${DB_NAME}"
+      - "MYSQL_USER=${DB_USER}"
+      - "MYSQL_PASSWORD=${DB_PASSWORD}"
+      - "MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}"
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: ${APP_NAME}_webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8888:80"
+      - "443:443"
+    volumes:
+      - ./sources:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  frontend:
+    container_name: ${APP_NAME}_frontend
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    ports:
+      - 80:8080
+    working_dir: /var/www/frontend
+    volumes:
+      - ./sources/frontend:/var/www/frontend
+    command: /bin/sh -c "npm run serve"
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
