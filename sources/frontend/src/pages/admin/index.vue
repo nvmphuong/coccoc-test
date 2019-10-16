@@ -37,11 +37,12 @@
                 this.$loading(true)
                 this.$api.post('crawl', {url: this.url}).then(rs => {
                     alert(rs);
-                    this.$loading(false)
                     this.url = '';
                 }).catch(message => {
                     alert(message);
-                });
+                }).finally( () =>{
+                    this.$loading(false)
+                })
             }
         },
         mounted(){

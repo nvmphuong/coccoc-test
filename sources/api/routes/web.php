@@ -11,7 +11,13 @@
 |
 */
 
+use App\Crawlers\MediaCrawler;
 
+$router->get('/', function () use ($router) {
+    $url = 'https://www.nhaccuatui.com/playlist/chung-36-nguyen-van-chung.87nO9Iqw1F29.html';
+    $result = MediaCrawler::run($url);
+    dd($result);
+});
 $router->group(['prefix' => 'api', 'middleware' => 'cors'], function () use ($router) {
     $router->post('crawl', 'CrawlController@postCrawl');
     $router->get('playlist', 'PlaylistController@index');

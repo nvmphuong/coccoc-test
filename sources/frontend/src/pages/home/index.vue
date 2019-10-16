@@ -48,9 +48,9 @@
                 this.$loading(true)
 
                 this.$api.get('playlist?page=' + page).then(rs => {
-                    this.$loading(false)
-
                     this.allPlaylist = rs.data
+                }).finally( () =>{
+                    this.$loading(false)
                 })
             }
         },

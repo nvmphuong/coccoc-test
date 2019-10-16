@@ -36,9 +36,12 @@
         },
         methods: {
             reload(){
+                this.$loading(true)
                 this.$api.get('medias?search=' + this.search).then(rs => {
                     this.medias = rs.data
-                });
+                }).finally( () =>{
+                    this.$loading(false)
+                })
             }
         },
         mounted(){

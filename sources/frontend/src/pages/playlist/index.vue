@@ -40,14 +40,6 @@
                 this.$api.get('playlist/' + this.id).then(rs => {
                     this.playlist = rs
                 });
-            },
-            checkDownload(media){
-                this.$api.get('download/' + media.id).then(rs => {
-                    window.location.href = rs;
-                }).catch(error => {
-                    this.reload();
-                    alert(error);
-                });
             }
         },
         mounted(){

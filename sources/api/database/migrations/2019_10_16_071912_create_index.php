@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIndex extends Migration
+class CreateMediaArtist extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateIndex extends Migration
      */
     public function up()
     {
-        Schema::create('index', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::table('medias', function (Blueprint $table) {
+            $table->index('name');
+        });
+        Schema::table('playlists', function (Blueprint $table) {
+            $table->index('name');
+        });
+        Schema::table('artists', function (Blueprint $table) {
+            $table->index('name');
         });
     }
 
@@ -26,6 +31,14 @@ class CreateIndex extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('index');
+        Schema::table('medias', function (Blueprint $table) {
+            $table->dropIndex('name');
+        });
+        Schema::table('playlists', function (Blueprint $table) {
+            $table->dropIndex('name');
+        });
+        Schema::table('artists', function (Blueprint $table) {
+            $table->dropIndex('name');
+        });
     }
 }
