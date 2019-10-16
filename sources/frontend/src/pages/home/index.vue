@@ -60,7 +60,11 @@
         },
         methods: {
             loadPlaylist(page = 1){
+                this.$loading(true)
+
                 this.$api.get('playlist?page=' + page).then(rs => {
+                    this.$loading(false)
+
                     this.allPlaylist = rs.data
                 })
             }, loadMedias(page = 1){

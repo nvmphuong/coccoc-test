@@ -9,7 +9,9 @@ import 'normalize.css/normalize.css';
 import VueLoading from 'vuejs-loading-plugin'
 
 // overwrite defaults
-Vue.use(VueLoading)
+Vue.use(VueLoading, {
+    text: 'Please wait', // default 'Loading'
+})
 
 Vue.config.productionTip = false
 

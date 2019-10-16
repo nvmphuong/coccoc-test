@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <div class="container">
+
+            <nav class="navbar navbar-expand-lg navbar-light ">
+
                 <ul class="nav justify-content-center">
                     <li class="nav-item active">
                         <router-link class="nav-link"  to="/">Home</router-link>
@@ -9,6 +12,7 @@
                         <router-link class="nav-link" route-link to="/admin">Admin</router-link>
                     </li>
                 </ul>
+            </nav>
 
             <router-view/>
         </div>
