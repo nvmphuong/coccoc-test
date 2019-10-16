@@ -17,7 +17,7 @@ docker exec  nhp_api php artisan migrate
 docker exec  nhp_frontend npm install
 ```
 
-Open frontend by your docker ip
+Wait few minutes and open frontend by your docker ip
 Open backend by your docker ip with port 8888
 
 ### Run test
