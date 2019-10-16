@@ -23,7 +23,7 @@ docker exec nhp_api php artisan migrate
 docker exec  nhp_api ./vendor/bin/phpunit
 ```
  Could we crawl hot video items from this source https://www.tiktok.com/vi/trending in a similar way? How and/or Why?
- - I checked html structure on tiktok page , i think it is posible to crawl video in this page.I saw video link display like 
+ - I checked html structure on tiktok page , i think it is posible to crawl video in this page.I saw video link display like this
  ```
  "contentUrl":"https://v16.tiktokcdn.com/d6838777b1c4ecd0a935a574855e9028/5da721cd/video/n/v0102/9841a6a7b16d40958839e9eced3ef8f6/?a=1180&br=1728&cr=0&cs=0&dr=3&ds=3&er=&l=20191016075722010115133128165CD3C8&lr=tiktok&rc=M2Q7cnN0Onc0cDMzNDgzM0ApaDY0Mzg6ZDw5N2k6ZDRkOGdgZHMyZDFkY2JfLS1hLzRzczVfMWMxMjIyLjEyXzJeM146Yw%3D%3D"
  ```
