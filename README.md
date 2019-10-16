@@ -15,7 +15,7 @@ docker exec nhp_api php artisan migrate
 
 ```
 
-- Wait few minutes and open frontend by your docker ip
+- Open frontend by your docker ip
 - Api hosted at port 8888
 
 ### Run test
